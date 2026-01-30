@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/conversionFragment">
+
+    <!-- Conversion Fragment (Home) -->
+    <fragment
+        android:id="@+id/conversionFragment"
+        android:name="com.example.currencyconverter.ui.conversion.ConversionFragment"
+        android:label="Currency Converter">
+        
+        <!-- SafeArgs: Arguments for pre-filling conversion data -->
+        <argument
+            android:name="fromCurrency"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        
+        <argument
+            android:name="toCurrency"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        
+        <argument
+            android:name="amount"
+            app:argType="float"
+            android:defaultValue="0.0" />
+        
+        <action
+            android:id="@+id/action_conversionFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        
+        <action
+            android:id="@+id/action_conversionFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+
+    <!-- Favorites Fragment -->
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.currencyconverter.ui.favorites.FavoritesFragment"
+        android:label="Favorites">
+        
+        <!-- SafeArgs: Action to navigate back with data -->
+        <action
+            android:id="@+id/action_favoritesFragment_to_conversionFragment"
+            app:destination="@id/conversionFragment"
+            app:popUpTo="@id/conversionFragment"
+            app:popUpToInclusive="true">
+            
+            <!-- Arguments to pass favorite data -->
+            <argument
+                android:name="fromCurrency"
+                app:argType="string"
+                app:nullable="true" />
+            
+            <argument
+                android:name="toCurrency"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
+    </fragment>
+
+    <!-- About Fragment -->
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.currencyconverter.ui.about.AboutFragment"
+        android:label="About" />
+
+</navigation>
