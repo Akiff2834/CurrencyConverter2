@@ -45,7 +45,7 @@ public class CurrencyConverterViewModel extends ViewModel {
     private final Context application;
 
     // API Key - moved from Fragment
-    private static final String API_KEY = "457716a57a835e3d0027e6fc";
+    private static final String API_KEY = "API_KEY";
 
     // Single LiveData for unified UI state
     private final MutableLiveData<UiState> _uiState = new MutableLiveData<>(new UiState.Idle());
